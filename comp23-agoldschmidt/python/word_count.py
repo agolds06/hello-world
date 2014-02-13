@@ -1,6 +1,9 @@
-import collections
+import collections, sys
+try:
+    file = open("input_file", 'r')
+except IOError:
+    exit()
 
-file = open("input_file", 'r')
 data = file.readlines()
 words = []
 for line in data:
