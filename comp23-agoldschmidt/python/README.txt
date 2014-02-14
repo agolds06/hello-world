@@ -1,4 +1,4 @@
-In ip_address.py, I implemented a quadruple nested for loop, and I output the ip addresses as 4 numbers separated by dashes.
+In ip_address.py, I implemented a quadruple nested for loop, and I output the ip addresses as 4 numbers separated by periods.
 
 In reverselist.py, I implemented a list, and used the reverse method for the list class to print the list in reverse order.
 
