@@ -135,8 +135,6 @@ if __name__ == "__main__":
                 screen.fill(BACKGROUND_COLOR)
 
                 #UPDATE SPRITES
-                bcruiser.update(clicked, button, SHIP_SPEED)
-                bcruiser.draw()
 
                 for laser in lasers:
                         if laser.offScreen():
@@ -145,6 +143,8 @@ if __name__ == "__main__":
                                 laser.update()
                                 laser.draw()
 
+                bcruiser.update(clicked, button, SHIP_SPEED)
+                bcruiser.draw()
                 counter += 1
 
                 #FLIP SCREEN

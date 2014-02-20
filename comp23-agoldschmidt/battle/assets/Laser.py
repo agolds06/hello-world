@@ -1,5 +1,6 @@
 import pygame, sys, os
 from pygame.locals import *
+from random import randint
 
 class Laser(pygame.sprite.Sprite):
         '''Class for a Battlecruiser'''
@@ -52,3 +53,48 @@ class Laser(pygame.sprite.Sprite):
                 if (self.y + self.dy <= 0) or (self.y + self.dy >= self.screen.get_size()[1]+self.image_h/2):
                         return True
                 return False
+
+if __name__ == "__main__":
+
+        #CONSTANTS
+        SCREEN_DIMENSIONS = (800,600)
+        FPS = 50
+        MAX_LASER_SPEED = 10
+        LASER = 'laser.gif'
+        BACKGROUND_COLOR = (0,0,0)
+        #VARIABLES AND INITIALIZATION
+        pygame.init()
+        screen = pygame.display.set_mode(SCREEN_DIMENSIONS)
+        pygame.display.set_caption('Lasers')
+        clock = pygame.time.Clock()
+        lasers = []
+        lasers = pygame.sprite.Group()
+        
+
+        #GAME LOOP
+        while True:
+                time_passed = clock.tick(FPS)
+
+                # Add a new laser at random x-coordinate with random speed
+                lasers.add(Laser(screen, LASER, randint(1, 750), 550, 0, randint(1, 10) * -1, False))
+
+                # Event handling here (to quit)
+                for event in pygame.event.get():
+                        if event.type == pygame.QUIT:
+                                pygame.quit()
+                                sys.exit()
+                        elif event.type == KEYDOWN:
+                                if event.key == K_ESCAPE:
+                                        pygame.quit()
+                                        sys.exit()					
+
+                # Redraw the background
+                screen.fill(BACKGROUND_COLOR)
+
+                # Update and redraw all sprites
+                for laser in lasers:
+                        laser.update()
+                        laser.draw()
+
+                # Draw the sprites
+                pygame.display.update()
