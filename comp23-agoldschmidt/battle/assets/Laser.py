@@ -93,6 +93,8 @@ if __name__ == "__main__":
 
                 # Update and redraw all sprites
                 for laser in lasers:
+                        if laser.offScreen():
+                                lasers.remove(laser)
                         laser.update()
                         laser.draw()
 
